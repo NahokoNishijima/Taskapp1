@@ -27,11 +27,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //検索
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
     let realm = try! Realm()
-        var categoryItems :<Task>? = []
+        var taskArray :Results<Task>!
     if searchText.isEmpty {
-        categoryItems = realm.objects(Task)
+        taskArray = realm.objects(Task.self)
     } else {
-    categoryItems = realm.objects(Task)
+    taskArray = realm.objects(Task.self)
     .filter("name BEGINSWITH %@", searchText)
     }
 
